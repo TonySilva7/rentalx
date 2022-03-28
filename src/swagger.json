@@ -1,0 +1,140 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "RentalX API Documentation",
+    "description": "This is an API documentation for car rental service",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Tony Silva",
+      "url": "https://tony-cv.netlify.app/",
+      "email": "tony.deve7oper@gmail.com"
+    }
+  },
+  "paths": {
+    "/categories": {
+      "post": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Create a category",
+        "description": "Create a new category",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "name": "string",
+                    "description": "string"
+                  }
+                },
+                "example": {
+                  "name": "Category name sample",
+                  "description": "Category description sample"
+                }
+              }
+            }
+          },
+          "description": "Category object that needs to be added to the store"
+        },
+        "responses": {
+          "201": {
+            "description": "Category created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "Date"
+                    }
+
+                  },
+                  "example": {
+                    "id": "5e9f8f8f-c9c0-4b3f-b8f8-b8f8f8f8f8f8",
+                    "name": "Category name sample",
+                    "description": "Category description sample",
+                    "created_at": "2022-03-27T21:49:37.361Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid category object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "name": "string",
+                      "description": "string"
+                    }
+                  },
+                  "example": {
+                    "message": "Category name is required"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Get categories",
+        "description": "List all categories",
+        "responses": {
+          "200": {
+            "description": "Categories list successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "Date"
+                      }
+                    },
+                    "example": {
+                      "id": "5e9f8f8f-c9c0-4b3f-b8f8-b8f8f8f8f8f8",
+                      "name": "Category name sample",
+                      "description": "Category description sample",
+                      "created_at": "2022-03-27T21:49:37.361Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+
+      }
+    }
+  }
+}
