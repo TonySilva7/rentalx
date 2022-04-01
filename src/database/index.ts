@@ -5,9 +5,9 @@ const dataSource = new DataSource({
   type: 'postgres',
   host: 'database',
   port: 5432,
-  username: 'root',
-  password: 'root',
-  database: 'test',
+  username: 'docker',
+  password: '1234',
+  database: 'rentx',
   // synchronize: true,
   // logging: true,
   // entities: [`${__dirname}/**/*.entity{.ts,.js}`],
@@ -20,4 +20,11 @@ const dataSource = new DataSource({
   // },
 });
 
-dataSource.initialize();
+dataSource
+  .initialize()
+  .then(() => {
+    console.log('Data Source has been initialized!');
+  })
+  .catch((err) => {
+    console.error('Error during Data Source initialization', err);
+  });
