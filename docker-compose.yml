@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  database:
+  db_rentx:
     container_name: database_rentx
     image: postgres
     restart: always
@@ -13,6 +13,8 @@ services:
       - POSTGRES_DB=rentx
     volumes:
       - pgdata:/data/postgresql
+    networks:
+      - rentx_network
 
   app:
     build: .
@@ -23,11 +25,17 @@ services:
       - 9229:9229
     volumes:
       - .:/usr/app
-    links:
-      - database
+    # links:
+    #   - db_rentx
+    networks:
+      - rentx_network
     depends_on:
-      - database
+      - db_rentx
 
 volumes:
   pgdata:
     driver: local
+
+networks:
+  rentx_network:
+    driver: bridge

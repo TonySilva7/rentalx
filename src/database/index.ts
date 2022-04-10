@@ -3,7 +3,7 @@ import { DataSource } from 'typeorm';
 const dataSource = new DataSource({
   name: 'myConnection',
   type: 'postgres',
-  host: 'database',
+  host: 'db_rentx', // database name in docker-compose
   port: 5432,
   username: 'docker',
   password: '1234',
@@ -23,7 +23,7 @@ const dataSource = new DataSource({
 dataSource
   .initialize()
   .then(() => {
-    console.log('Data Source has been initialized!');
+    console.log('Data Source has been initialized! 📦');
   })
   .catch((err) => {
     console.error('Error during Data Source initialization', err);
