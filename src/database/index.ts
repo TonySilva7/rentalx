@@ -6,7 +6,7 @@ interface IOptions {
 
 getConnectionOptions().then((options) => {
   const newOptions = options as IOptions;
-  newOptions.host = 'database'; // Essa opção deverá ser EXATAMENTE o nome dado ao service do banco de dados
+  newOptions.host = 'db_rentx'; // Essa opção deverá ser EXATAMENTE o nome dado ao service do banco de dados
   createConnection({
     ...options,
   })
@@ -14,6 +14,6 @@ getConnectionOptions().then((options) => {
       console.log(`Database connected 📦 -> ${conn.name}`);
     })
     .catch((err) => {
-      console.log('Database connection error: ', err);
+      console.log('Database fail 💩: ', err);
     });
 });
