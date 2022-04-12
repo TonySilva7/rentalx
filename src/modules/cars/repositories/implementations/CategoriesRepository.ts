@@ -5,10 +5,12 @@ import { ICategoriesRepository, ICategoryDTO } from '../ICategoriesRepository';
 
 class CategoriesRepository implements ICategoriesRepository {
   constructor() {
-    this.repository = getRepository(Category); // instancia o repository do TypeORM
+    // >>> instancia o repository do TypeORM
+    this.repository = getRepository(Category);
   }
 
-  private repository: Repository<Category>; // repository do TypeORM
+  // >>> define propriedade com o type de Repository do TypeORM
+  private repository: Repository<Category>;
 
   async create({ name, description }: ICategoryDTO): Promise<Category> {
     const category = this.repository.create({ name, description });

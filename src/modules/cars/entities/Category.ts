@@ -5,18 +5,21 @@ import { v4 as uuidV4 } from 'uuid';
 class Category {
   @PrimaryColumn()
   id?: string;
+
   @Column()
   name: string;
+
   @Column()
   description: string;
+
   @CreateDateColumn()
   created_at: Date;
 
   constructor() {
     this.id = !this.id ? uuidV4() : this.id;
-    this.name = '';
-    this.description = '';
-    this.created_at = new Date();
+    // this.name = '';
+    // this.description = '';
+    // this.created_at = new Date();
   }
 }
 
