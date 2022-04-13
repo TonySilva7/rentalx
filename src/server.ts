@@ -3,6 +3,7 @@ import 'reflect-metadata';
 import swaggerUI from 'swagger-ui-express';
 
 import { myRoutes } from './routes';
+import './shared/container';
 import './database';
 import swaggerDocument from './swagger.json';
 
