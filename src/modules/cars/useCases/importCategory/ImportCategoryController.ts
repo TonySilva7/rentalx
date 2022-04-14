@@ -8,9 +8,15 @@ class ImportCategoryController {
     const { file } = request;
     const importCategoryUseCase = container.resolve(ImportCategoryUseCase);
 
-    await importCategoryUseCase.execute(file as Express.Multer.File);
+    try {
+      await importCategoryUseCase.execute(file as Express.Multer.File);
 
-    return response.json({ message: 'Importação realizada com sucesso!' });
+      return response.status(201).json({ message: 'Importação realizada com sucesso!' });
+    } catch (error) {
+      return response.status(400).json({
+        message: `${error}` || 'Unexpected error.',
+      });
+    }
   }
 }
 

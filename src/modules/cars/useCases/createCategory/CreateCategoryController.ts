@@ -16,9 +16,9 @@ class CreateCategoryController {
       });
 
       return response.status(201).json(category);
-    } catch (err) {
+    } catch (error) {
       return response.status(400).json({
-        message: String(err) || 'Unexpected error.',
+        message: `${error}` || 'Unexpected error.',
       });
     }
   }
