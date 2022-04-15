@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "RentalX API Documentation",
+    "title": "RentX API Documentation",
     "description": "This is an API documentation for car rental service",
     "version": "1.0.0",
     "contact": {
@@ -134,6 +134,120 @@
         }
 
 
+      }
+    },
+    "/categories/import": {
+      "post": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Import categories",
+        "description": "Upload new categories",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Category object that needs to be added to the store"
+        },
+        "responses": {
+          "201": {
+            "description":"Create a new category"
+          }
+        }
+      }
+    },
+    "/specifications": {
+      "post": {
+        "tags": [
+          "Specification"
+        ],
+        "summary": "Create a specification",
+        "description": "Create a new specification",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Specification"
+              }
+            }
+          },
+          "description": "Specification object that needs to be added to the store"
+        },
+        "responses": {
+          "201": {
+            "description": "Specification created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "Date"
+                    }
+
+                  },
+                  "example": {
+                    "id": "5e9f8f8f-c9c0-4b3f-b8f8-b8f8f8f8f8f8",
+                    "name": "Specification name sample",
+                    "description": "Specification description sample",
+                    "created_at": "2022-03-27T21:49:37.361Z"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid specification object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "name": "string",
+                      "description": "string"
+                    }
+                  },
+                  "example": {
+                    "message": "Error: Specification 'xxx' already exists"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Specification": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
       }
     }
   }
