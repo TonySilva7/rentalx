@@ -10,9 +10,6 @@ class User {
   public name: string;
 
   @Column()
-  public username: string;
-
-  @Column()
   public email: string;
 
   @Column()
